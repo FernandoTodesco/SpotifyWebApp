@@ -1,0 +1,62 @@
+                                                    <!-- NOT ARTISTS CARD -->
+
+<div class="card-columns"> 
+    <div *ngIf="arrayToRead">
+        <div *ngFor="let items of arrayToRead">
+            <div class="card">    <!--artist here-->                    
+                <ng-container *ngIf="items.images.length > 0; else elseTemplate">
+                        <a routerLink="/album/{{items.id}}">   
+                            <img [src]="items.images[0].url" class="card-img-top" alt="album image">
+                        </a>
+                </ng-container>
+                <ng-template #elseTemplate>
+                        <img src="https://thumbs.dreamstime.com/b/no-image-available-27908847.jpg" class="card-img-top" alt="image not found">
+                </ng-template>                                                              
+                <div class="card-body">
+                    <a routerLink="/album/{{items.id}}">   
+                        <h4 class="card-title">{{items.name}}</h4>
+                    </a>
+                    <div class="card-text">
+                        <span *ngFor="let item of items.artists">
+                                <a routerLink="/artist/{{item.id}}">
+                                    <h5>{{item.name}}</h5>
+                                </a>
+                        </span>                                        
+                        <span class="badge badge-pill badge-dark">{{items.album_type}}</span>
+                        <span><i class="far fa-star"></i></span>
+                    </div>
+                </div>
+            </div>
+        </div>    
+    </div>        
+</div>
+
+<!-- 
+<div class="card-columns"> 
+    <div *ngIf="arrayToRead">
+        <div *ngFor="let items of arrayToRead">
+            <div class="card">
+                <a routerLink="/artist/{{items.artists[0].id}}">
+                    <img [src]="items.images[1].url" class="card-img-top" alt="...">
+                </a>
+                <div class="card-body">
+                    <h4 class="card-title">{{items.name}}</h4>
+                    <div class="card-text">
+                        <div *ngIf="items.type==artist; else notArtist">
+                            <span *ngFor="let item of items.genres">
+                                <h5>{{item.genre}}</h5>
+                            </span>
+                            <ng-template #notArtist>
+                                <span *ngFor="let item of items.artists">
+                                    <h5>{{item.name}}</h5>
+                                </span>                                        
+                            </ng-template>
+                        </div>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+            </div>
+        </div>    
+    </div>        
+</div> -->
+    

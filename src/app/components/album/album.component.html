@@ -1,0 +1,23 @@
+<div *ngIf="tracks">
+  <div *ngFor="let item of tracks">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="well">
+            <h3>{{item.name}}</h3>                      
+        </div>        
+      </div>
+      <div class="col-md-2">
+          <div class="well">
+              <h5>{{getTime(item.duration_ms)}}</h5>                      
+          </div>        
+        </div>
+      <div class="col-md-4">
+          <audio controls>        
+              <source src="{{item.preview_url}}" type="audio/mpeg">
+              Preview not found.    
+            </audio>
+            <span *ngIf="!item.preview_url">This track has no preview.</span>
+      </div>
+    </div>
+  </div>
+</div>

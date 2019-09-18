@@ -1,0 +1,22 @@
+<h1>{{albums[0].artists[0].name}}</h1>
+<div *ngFor="let album of albums">  
+  <div class="card mb-8" > <!--style="max-width: 540px;"-->
+    <div class="row">
+      <div class="col-md-4">
+        <a routerLink="/album/{{album.id}}">
+          <img [src]="album.images[0].url" class="card-img" alt="...">
+        </a>    
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <a routerLink="/album/{{album.id}}">                          
+            <h2 class="card-title">{{album.name}}</h2>                      
+          </a> 
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
