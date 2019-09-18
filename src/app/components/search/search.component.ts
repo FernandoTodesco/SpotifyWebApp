@@ -16,13 +16,11 @@ export class SearchComponent implements OnInit {
        
     this.spotifyService.getSearch(this.searchStr)
       .subscribe(res => {
-        localStorage.setItem('currentSearch', JSON.stringify(res)); //returns undefined
       })
 
      }
   
   ngOnInit() {
   }
-  
 }
 

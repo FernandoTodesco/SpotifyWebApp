@@ -3,7 +3,7 @@
 <div class="card-columns"> 
     <div *ngIf="arrayToRead">
         <div *ngFor="let items of arrayToRead">
-            <div class="card">    <!--artist here-->                    
+            <div class="card" (click)="clearSearch()">    <!--artist here-->                    
                 <ng-container *ngIf="items.images.length > 0; else elseTemplate">
                         <a routerLink="/album/{{items.id}}">   
                             <img [src]="items.images[0].url" class="card-img-top" alt="album image">

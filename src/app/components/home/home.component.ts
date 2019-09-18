@@ -10,7 +10,6 @@ import { SpotifyService } from 'src/app/services/spotify.service';
 export class HomeComponent implements OnInit {
 
   newReleases: any[] = [];
-  searchResult: any[] = [];    
   accessToken;
     
   constructor(
@@ -24,10 +23,7 @@ export class HomeComponent implements OnInit {
     this.spotify.getNewReleases().subscribe((data: any) => {
       this.newReleases = data;        
     });
-    this.spotify.searchEvent.subscribe((data) =>{
-      this.searchResult = data;
-      
-    } )
+
   }
   
   login(){

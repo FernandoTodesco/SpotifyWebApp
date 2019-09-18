@@ -11,6 +11,7 @@ import { HomeComponent } from './components/home/home.component';
 import { ArtistComponent } from './components/artist/artist.component';
 import { CardComponent } from './components/card/card.component';
 import { AlbumComponent } from './components/album/album.component';
+import { SearchResultsComponent } from './components/search-results/search-results.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { AlbumComponent } from './components/album/album.component';
     HomeComponent,
     ArtistComponent,
     CardComponent,
-    AlbumComponent
+    AlbumComponent,
+    SearchResultsComponent
   ],
   imports: [
     BrowserModule,
