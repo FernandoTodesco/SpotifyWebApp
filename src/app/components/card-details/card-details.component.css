@@ -1,0 +1,12 @@
+.star{    
+    float: right;
+}
+
+span.badge{
+    display: inline-block;    
+    margin: 0.3rem;    
+}
+
+.badge-secondary{
+    background-color: lightgreen;
+}

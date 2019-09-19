@@ -1,5 +1,3 @@
-                                                    <!-- NOT ARTISTS CARD -->
-
 <div class="card-columns"> 
     <div *ngIf="arrayToRead">
         <div *ngFor="let item of arrayToRead">
@@ -7,33 +5,3 @@
         </div>    
     </div>        
 </div>
-
-<!-- 
-<div class="card-columns"> 
-    <div *ngIf="arrayToRead">
-        <div *ngFor="let items of arrayToRead">
-            <div class="card">
-                <a routerLink="/artist/{{items.artists[0].id}}">
-                    <img [src]="items.images[1].url" class="card-img-top" alt="...">
-                </a>
-                <div class="card-body">
-                    <h4 class="card-title">{{items.name}}</h4>
-                    <div class="card-text">
-                        <div *ngIf="items.type==artist; else notArtist">
-                            <span *ngFor="let item of items.genres">
-                                <h5>{{item.genre}}</h5>
-                            </span>
-                            <ng-template #notArtist>
-                                <span *ngFor="let item of items.artists">
-                                    <h5>{{item.name}}</h5>
-                                </span>                                        
-                            </ng-template>
-                        </div>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-            </div>
-        </div>    
-    </div>        
-</div> -->
-    
