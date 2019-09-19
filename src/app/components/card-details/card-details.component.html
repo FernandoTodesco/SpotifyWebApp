@@ -1,0 +1,24 @@
+<div class="card">    <!--artist here-->                    
+    <ng-container *ngIf="cardItem.images.length > 0; else elseTemplate">
+        <a (click)="clearSearch()" routerLink="/album/{{cardItem.id}}">   
+            <img [src]="cardItem.images[0].url" class="card-img-top" alt="album image">
+        </a>
+    </ng-container>
+    <ng-template #elseTemplate>
+            <img src="https://thumbs.dreamstime.com/b/no-image-available-27908847.jpg" class="card-img-top" alt="image not found">
+    </ng-template>                                                              
+    <div class="card-body">
+        <a (click)="clearSearch()" routerLink="/album/{{cardItem.id}}">   
+            <h4 class="card-title">{{cardItem.name}}</h4>
+        </a>
+        <div class="card-text">
+            <span *ngFor="let item of cardItem.artists">
+                    <a (click)="clearSearch()" routerLink="/artist/{{item.id}}">
+                        <h5>{{item.name}}</h5>
+                    </a>
+            </span>                                        
+            <span class="badge badge-pill badge-dark">{{cardItem.album_type}}</span>
+            <app-favorite-star [item]=cardItem (favoriteEvent)="handleFavorited($event)"></app-favorite-star>
+        </div>
+    </div>
+</div>

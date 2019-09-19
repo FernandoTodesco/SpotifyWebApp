@@ -18,7 +18,11 @@ export class HomeComponent implements OnInit {
     ) { }
 
   ngOnInit() {
-  this.login()    
+    this.login()
+
+    if (!localStorage.getItem('favorites')) { //inicializando favoritos
+      localStorage.setItem('favorites', "[]");
+    }
 
     this.spotify.getNewReleases().subscribe((data: any) => {
       this.newReleases = data;        

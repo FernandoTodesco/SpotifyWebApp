@@ -20,4 +20,5 @@ export class CardComponent implements OnChanges {
     this.clearSearchEvent.emit();
   }
 
+
 }

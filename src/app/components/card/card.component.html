@@ -2,31 +2,8 @@
 
 <div class="card-columns"> 
     <div *ngIf="arrayToRead">
-        <div *ngFor="let items of arrayToRead">
-            <div class="card" (click)="clearSearch()">    <!--artist here-->                    
-                <ng-container *ngIf="items.images.length > 0; else elseTemplate">
-                        <a routerLink="/album/{{items.id}}">   
-                            <img [src]="items.images[0].url" class="card-img-top" alt="album image">
-                        </a>
-                </ng-container>
-                <ng-template #elseTemplate>
-                        <img src="https://thumbs.dreamstime.com/b/no-image-available-27908847.jpg" class="card-img-top" alt="image not found">
-                </ng-template>                                                              
-                <div class="card-body">
-                    <a routerLink="/album/{{items.id}}">   
-                        <h4 class="card-title">{{items.name}}</h4>
-                    </a>
-                    <div class="card-text">
-                        <span *ngFor="let item of items.artists">
-                                <a routerLink="/artist/{{item.id}}">
-                                    <h5>{{item.name}}</h5>
-                                </a>
-                        </span>                                        
-                        <span class="badge badge-pill badge-dark">{{items.album_type}}</span>
-                        <span><i class="far fa-star"></i></span>
-                    </div>
-                </div>
-            </div>
+        <div *ngFor="let item of arrayToRead">
+            <app-card-details [cardItem]=item></app-card-details>
         </div>    
     </div>        
 </div>
