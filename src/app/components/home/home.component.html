@@ -1,6 +1,9 @@
+<div *ngIf="favs.length > 0">
+    <h2>Favorites</h2>
+    <app-card [arrayToRead]=favs></app-card>
+</div>
+
 <div *ngIf="newReleases">
     <h2>New Releases</h2>
     <app-card [arrayToRead]=newReleases></app-card>
 </div>
-
-

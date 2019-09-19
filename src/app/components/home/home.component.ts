@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { SpotifyService } from 'src/app/services/spotify.service';
+import { FavEventsService } from './../../services/fav-events.service';
 
 @Component({
   selector: 'app-home',
@@ -10,24 +11,29 @@ import { SpotifyService } from 'src/app/services/spotify.service';
 export class HomeComponent implements OnInit {
 
   newReleases: any[] = [];
-  accessToken;
+  accessToken: boolean;
+  favs: any[] = [];
     
   constructor(
     private router: Router, 
-    private spotify: SpotifyService
+    private spotify: SpotifyService,
+    private favoriteService: FavEventsService
     ) { }
 
   ngOnInit() {
-    this.login()
-
-    if (!localStorage.getItem('favorites')) { //inicializando favoritos
-      localStorage.setItem('favorites', "[]");
+    this.login()    
+    
+    if (!localStorage.getItem('favorites')) { 
+      localStorage.setItem('favorites', "[]"); //inicializando favoritos
     }
+    this.favoriteService.favoriteEvent.subscribe((event) => {
+      this.favs = JSON.parse(localStorage.getItem('favorites'));
+      }
+    );  
 
     this.spotify.getNewReleases().subscribe((data: any) => {
       this.newReleases = data;        
     });
-
   }
   
   login(){
@@ -45,6 +51,5 @@ export class HomeComponent implements OnInit {
     } else {
       this.spotify.auth();
     }    
-  } 
-  
+  }   
 }

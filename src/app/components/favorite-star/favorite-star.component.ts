@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { FavEventsService } from 'src/app/services/fav-events.service';
 
 @Component({
   selector: 'app-favorite-star',
@@ -11,7 +12,7 @@ export class FavoriteStarComponent implements OnInit {
   @Input() item;
   @Output() favoriteEvent = new EventEmitter<Object>();
 
-  constructor() { }
+  constructor(private favoriteService: FavEventsService) { }
 
   ngOnInit() {
     this.favorited = this.item.favorited;
@@ -21,5 +22,6 @@ export class FavoriteStarComponent implements OnInit {
     this.favorited = !this.favorited;
 
     this.favoriteEvent.emit(this.item);
+    this.favoriteService.updateFavorite(this.favorited);
   }
 }
