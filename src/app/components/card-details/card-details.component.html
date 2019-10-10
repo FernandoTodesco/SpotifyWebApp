@@ -1,38 +1,45 @@
 <div class="card">
-    <div *ngIf="cardItem.images">
+    <ng-container *ngIf="cardItem.images ; else elseTemplate">
         <ng-container *ngIf="cardItem.images.length > 0; else elseTemplate">
-            <a (click)="clearSearch()" routerLink="/{{cardItem.type}}/{{cardItem.id}}">
+            <a routerLink="/{{cardItem.type}}/{{cardItem.id}}" (click)="clearSearch()">
                 <img [src]="cardItem.images[0].url" class="card-img-top" alt="{{cardItem.type}} image">
             </a>
         </ng-container>
         <ng-template #elseTemplate>
+            <a routerLink="/{{cardItem.type}}/{{cardItem.id}}" (click)="clearSearch()">
                 <img src="https://thumbs.dreamstime.com/b/no-image-available-27908847.jpg" 
                     class="card-img-top" alt="image not found">
-        </ng-template>
-        <div class="card-body">
-            <a (click)="clearSearch()" routerLink="/{{cardItem.type}}/{{cardItem.id}}">
-                <h4 class="card-title">{{cardItem.name}}</h4>
             </a>
-            <div class="card-text">
-                <ng-container *ngIf="cardItem.artists; else genresTemplate">
-                    <span *ngFor="let item of cardItem.artists">
-                            <a (click)="clearSearch()" routerLink="/artist/{{item.id}}">
-                                <h5>{{item.name}}</h5>
-                            </a>
-                    </span>
-                </ng-container>
-                <ng-template #genresTemplate>
-                    <span *ngFor="let item of cardItem.genres">
-                        <h5>{{item.name}}</h5>
-                    </span>
-                </ng-template>
-                <app-favorite-star class="star" [item]=cardItem 
-                (favoriteEvent)="handleFavorited($event)"></app-favorite-star>
-                <span class="badge badge-dark">{{cardItem.type}}</span>
-                <div *ngIf="cardItem.album_type">
-                    <span class="badge badge-secondary">{{cardItem.album_type}}</span>
-                </div>
+        </ng-template>
+    </ng-container>
+    <ng-template #elseTemplate>
+            <a routerLink="/{{cardItem.type}}/{{cardItem.id}}" (click)="clearSearch()">
+                <img src="https://thumbs.dreamstime.com/b/no-image-available-27908847.jpg" 
+                    class="card-img-top" alt="image not found">
+            </a>
+        </ng-template>        
+    <div class="card-body">
+        <a routerLink="/{{cardItem.type}}/{{cardItem.id}}" (click)="clearSearch()">
+            <h4 class="card-title">{{cardItem.name}}</h4>
+        </a>
+        <div class="card-text">
+            <ng-container *ngIf="cardItem.artists; else genresTemplate">
+                <span *ngFor="let item of cardItem.artists">
+                        <a routerLink="/artist/{{item.id}}"  (click)="clearSearch()">
+                            <h5>{{item.name}}</h5>
+                        </a>
+                </span>
+            </ng-container>
+            <ng-template #genresTemplate>
+                <span *ngFor="let item of cardItem.genres">
+                    <h5>{{item.name}}</h5>
+                </span>
+            </ng-template>
+            <app-favorite-star class="star" [item]=cardItem></app-favorite-star>            
+            <span class="badge badge-dark">{{cardItem.type}}</span>
+            <div *ngIf="cardItem.album_type">
+                <span class="badge badge-secondary">{{cardItem.album_type}}</span>
             </div>
         </div>
-    </div>            
+    </div>
 </div>

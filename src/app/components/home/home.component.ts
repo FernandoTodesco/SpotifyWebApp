@@ -22,20 +22,27 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.login()    
-    
+    this.loadFavorites();    
+    this.loadNewReleases();
+  }
+
+  loadFavorites(){
     if (!localStorage.getItem('favorites')) { 
-      localStorage.setItem('favorites', "[]"); //inicializando favoritos
+      localStorage.setItem('favorites', "[]");
     }
-    this.favoriteService.favoriteEvent.subscribe((event) => {
+    this.favoriteService.favoriteEvent.subscribe(() => {
       this.favs = JSON.parse(localStorage.getItem('favorites'));
+      this.loadNewReleases();
       }
     );  
-
+  }
+  
+  loadNewReleases(){
     this.spotify.getNewReleases().subscribe((data: any) => {
       this.newReleases = data;        
     });
   }
-  
+
   login(){
     const currentUrl = this.router.url.split('access_token=')[1];
     const token: string = currentUrl ? currentUrl.split('&')[0] : null;

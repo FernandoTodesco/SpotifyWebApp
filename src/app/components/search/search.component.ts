@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { SpotifyService } from './../../services/spotify.service';
 
 @Component({
@@ -6,21 +6,15 @@ import { SpotifyService } from './../../services/spotify.service';
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.css']
 })
-export class SearchComponent implements OnInit {
-  searchStr: string;  
-  searchResult;
+export class SearchComponent {
+  searchStr: string;
 
   constructor(private spotifyService: SpotifyService) { }
 
-  searchMusic(){
-       
+  searchMusic(){        
     this.spotifyService.getSearch(this.searchStr)
-      .subscribe(res => {
-      })
-
-     }
+      .subscribe(() => {})
+    }
   
-  ngOnInit() {
-  }
+  
 }
-

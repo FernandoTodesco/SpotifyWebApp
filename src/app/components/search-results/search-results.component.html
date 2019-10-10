@@ -1,4 +1,4 @@
 <div *ngIf="searchResult">
-    <h2>Search Results <!-- for {{searchResult}}--></h2>
-    <app-card (clearSearchEvent)="clearSearch($event)" [arrayToRead]=searchResult></app-card>
+    <h2>Search Results</h2>
+    <app-card [arrayToRead]=searchResult></app-card>
 </div>

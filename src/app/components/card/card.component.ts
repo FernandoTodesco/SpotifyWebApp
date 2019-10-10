@@ -1,24 +1,14 @@
-import { Component, Input, OnChanges, EventEmitter, Output } from '@angular/core';
+import { Component, Input, } from '@angular/core';
 
 @Component({
   selector: 'app-card',
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.css']
 })
-export class CardComponent implements OnChanges {
+export class CardComponent {
 
-  @Input() arrayToRead: any[]; 
-  @Output() clearSearchEvent = new EventEmitter<string>();
+  @Input() arrayToRead: any[];   
 
   constructor() { }  
-
-  ngOnChanges() {
- 
-  }
-
-  clearSearch() {
-    this.clearSearchEvent.emit();
-  }
-
 
 }

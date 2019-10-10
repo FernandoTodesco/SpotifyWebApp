@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { FavEventsService } from 'src/app/services/fav-events.service';
 
 @Component({
@@ -7,21 +7,22 @@ import { FavEventsService } from 'src/app/services/fav-events.service';
   styleUrls: ['./favorite-star.component.css']
 })
 export class FavoriteStarComponent implements OnInit {
-  private favorited: boolean = false;
-
+  
+  private favorited: boolean;
   @Input() item;
-  @Output() favoriteEvent = new EventEmitter<Object>();
 
   constructor(private favoriteService: FavEventsService) { }
 
   ngOnInit() {
-    this.favorited = this.item.favorited;
+    let favorites = JSON.parse(localStorage.getItem('favorites'));
+    let favIndex = favorites.findIndex(x => x.id == this.item.id);
+    favIndex >= 0 ? this.favorited = true : this.favorited = false;  
   }
 
-  toggeFavorite() {
-    this.favorited = !this.favorited;
-
-    this.favoriteEvent.emit(this.item);
-    this.favoriteService.updateFavorite(this.favorited);
+  toggleFavorite(item) {
+    this.favoriteService.handleFavorited(item);
+    let favorites = JSON.parse(localStorage.getItem('favorites'));
+    let favIndex = favorites.findIndex(x => x.id == item.id);
+    favIndex >= 0 ? this.favorited = true : this.favorited = false;
   }
 }

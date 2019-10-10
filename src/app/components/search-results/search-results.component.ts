@@ -1,16 +1,18 @@
-import { Component, OnInit, OnChanges, Input, SimpleChanges } from '@angular/core';
+import { Component, OnInit, } from '@angular/core';
 import { SpotifyService } from 'src/app/services/spotify.service';
+import { SearchService } from 'src/app/services/search.service';
 
 @Component({
   selector: 'app-search-results',
   templateUrl: './search-results.component.html',
   styleUrls: ['./search-results.component.css']
 })
-export class SearchResultsComponent implements OnInit, OnChanges {
+export class SearchResultsComponent implements OnInit {
   private searchResult: any[] = [];
 
   constructor(
-    private spotify: SpotifyService
+    private spotify: SpotifyService,
+    private searchService: SearchService
     ) { }
 
   ngOnInit() {
@@ -21,13 +23,8 @@ export class SearchResultsComponent implements OnInit, OnChanges {
       }
 
     });
+
+    this.searchService.currentEvent.subscribe(event => this.searchResult = event);
     this.searchResult = JSON.parse(localStorage.getItem('currentSearch'));
-  }
-
-  ngOnChanges(changes: SimpleChanges) {
-  }
-
-  clearSearch($event) {
-    this.searchResult = undefined
   }
 }
