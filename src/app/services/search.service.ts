@@ -13,5 +13,6 @@ export class SearchService {
 
   clearEvent(event$) {
     this.searchEventSource.next(event$);
+    localStorage.setItem('currentSearch', null);
   }
 }

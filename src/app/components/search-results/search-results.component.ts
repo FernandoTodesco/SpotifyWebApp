@@ -18,7 +18,7 @@ export class SearchResultsComponent implements OnInit {
   ngOnInit() {
     this.spotify.searchEvent.subscribe((data) => {
       this.searchResult = data;
-      if (data) {
+      if (data !== null && data !== []) {
         localStorage.setItem('currentSearch', JSON.stringify(this.searchResult));
       }
 

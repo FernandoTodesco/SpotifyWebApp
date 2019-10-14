@@ -9,7 +9,7 @@ import { SearchService } from 'src/app/services/search.service';
 export class CardDetailsComponent {
 
   @Input() cardItem;
-  private searchResult: any[] = [];
+  private searchResult: any[];
 
   constructor(private searchService: SearchService) { }
 
