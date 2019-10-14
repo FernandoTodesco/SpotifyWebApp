@@ -1,6 +1,6 @@
 <ng-container *ngIf="favorited; else notFavorited">
-    <i class="material-icons favorite" (click)="toggleFavorite(item)" >star</i>
+    <i class="material-icons favorite star" (click)="toggleFavorite(item)" >star</i>
 </ng-container>
 <ng-template #notFavorited>    
-    <i class="material-icons notFavorite" (click)="toggleFavorite(item)" >star_border</i>  
+    <i class="material-icons notFavorite star" (click)="toggleFavorite(item)" >star_border</i>  
 </ng-template>  

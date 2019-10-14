@@ -35,7 +35,7 @@
                     <h5>{{item.name}}</h5>
                 </span>
             </ng-template>
-            <app-favorite-star class="star" [item]=cardItem></app-favorite-star>            
+            <app-favorite-star [item]=cardItem></app-favorite-star>            
             <span class="badge badge-dark">{{cardItem.type}}</span>
             <div *ngIf="cardItem.album_type">
                 <span class="badge badge-secondary">{{cardItem.album_type}}</span>

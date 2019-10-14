@@ -14,16 +14,16 @@ export class ArtistComponent implements OnInit {
 
   constructor(
     private spotifyService: SpotifyService,
-    private route: ActivatedRoute    
+    private route: ActivatedRoute
     ) {
       this.artistId = this.route.snapshot.paramMap.get('id');
-     }    
+     }
 
   ngOnInit() {
 
     this.spotifyService.getArtistAlbums(this.artistId).subscribe((data: any) => {
-      this.albums = data;       
-    })      
+      this.albums = data;
+    });
 }
 
 }

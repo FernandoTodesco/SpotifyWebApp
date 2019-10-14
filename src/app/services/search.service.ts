@@ -7,11 +7,11 @@ import { BehaviorSubject } from 'rxjs';
 export class SearchService {
 
   private searchEventSource = new BehaviorSubject(null);
-  currentEvent = this.searchEventSource.asObservable();  
+  currentEvent = this.searchEventSource.asObservable();
 
   constructor() { }
 
-  clearEvent(event$){
-    this.searchEventSource.next(event$)
+  clearEvent(event$) {
+    this.searchEventSource.next(event$);
   }
 }

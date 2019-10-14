@@ -11,10 +11,8 @@ export class SearchComponent {
 
   constructor(private spotifyService: SpotifyService) { }
 
-  searchMusic(){        
+  searchMusic() {
     this.spotifyService.getSearch(this.searchStr)
-      .subscribe(() => {})
+      .subscribe(() => {});
     }
-  
-  
 }

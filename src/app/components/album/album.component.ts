@@ -12,27 +12,24 @@ export class AlbumComponent implements OnInit {
   tracks: [] = [];
   time: string;
 
- 
   constructor(
     private spotifyService: SpotifyService,
-    private route: ActivatedRoute    
+    private route: ActivatedRoute
     ) {
       this.albumId = this.route.snapshot.paramMap.get('id');
      }
 
   ngOnInit() {
-    
     this.spotifyService.getAlbumTracks(this.albumId).subscribe((data: any) => {
-      this.tracks = data;  
-    })
+      this.tracks = data;
+    });
 
   }
 
-  getTime(millis:number){
-  let minutes = Math.floor(millis / 60000);
-  let seconds: any = ((millis % 60000) / 1000).toFixed(0);
-  return minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
+  getTime(millis: number) {
+  const minutes = Math.floor(millis / 60000);
+  const seconds: any = ((millis % 60000) / 1000).toFixed(0);
+  return minutes + ':' + (seconds < 10 ? '0' : '') + seconds;
   }
-  
-   
+
 }

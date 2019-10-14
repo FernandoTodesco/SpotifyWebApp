@@ -7,8 +7,8 @@ import { Component, Input, } from '@angular/core';
 })
 export class CardComponent {
 
-  @Input() arrayToRead: any[];   
+  @Input() arrayToRead: any[];
 
-  constructor() { }  
+  constructor() { }
 
 }
